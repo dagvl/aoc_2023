@@ -81,7 +81,7 @@ mod tests {
 
     #[test]
     fn part1_real_data() {
-        let data = include_str!("./bin/input.txt");
+        let data = include_str!("input.txt");
         assert_eq!(54561, solve_part1(data));
     }
 
@@ -106,6 +106,11 @@ zoneight234
 7pqrstsixteen";
 
         assert_eq!(281, solve_part2(test_data));
+    }
 
+    #[test]
+    fn part2_real_data() {
+        let data = include_str!("input.txt");
+        assert_eq!(54076, solve_part2(data));
     }
 }

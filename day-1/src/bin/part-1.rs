@@ -1,7 +1,7 @@
 use day_1::*;
 
 fn main() {
-    let data = include_str!("./input.txt");
+    let data = include_str!("../input.txt");
     let result1 = solve_part1(data);
     println!("Solution part 1: {}", result1);
 
