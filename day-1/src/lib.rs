@@ -40,9 +40,8 @@ fn find_all_digits(input: &str) -> Vec<i64> {
 
     let mut digits = vec![];
     for i in 0..n {
-        match find_digit(&input[i..]) {
-            Some(d) => {digits.push(d)}
-            None => {}
+        if let Some(d) = find_digit(&input[i..]) {
+            digits.push(d);
         }
     }
 
@@ -50,7 +49,7 @@ fn find_all_digits(input: &str) -> Vec<i64> {
 }
 
 pub fn find_digit(input: &str) -> Option<i64> {
-    let first_char = input.chars().nth(0).unwrap();
+    let first_char = input.chars().next().unwrap();
 
     // if it is a number it's easy
     if first_char.is_numeric() {
@@ -85,6 +84,7 @@ mod tests {
         assert_eq!(54561, solve_part1(data));
     }
 
+    //noinspection SpellCheckingInspection
     #[test]
     fn part1_test_data() {
         let test_data = "1abc2
@@ -95,6 +95,7 @@ treb7uchet
         assert_eq!(142, solve_part1(test_data));
     }
 
+    //noinspection SpellCheckingInspection
     #[test]
     fn part2_test_data() {
         let test_data = "two1nine
