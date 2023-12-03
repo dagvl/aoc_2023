@@ -46,7 +46,7 @@ fn is_valid(game: &Game) -> bool {
     let g = *game.dice.get("green").unwrap_or(&0);
     let b = *game.dice.get("blue").unwrap_or(&0);
 
-    return r <= 12 && g <= 13 && b <= 14
+    r <= 12 && g <= 13 && b <= 14
 }
 
 pub fn solve_part2(input: &str) -> i32 {
@@ -62,8 +62,8 @@ pub fn solve_part2(input: &str) -> i32 {
 }
 
 fn parse_line(draw: &str) -> Game {
-    let (game_string, draws_string) = draw.split_once(":").expect("there must be a colon");
-    let (_, number_string) = game_string.split_once(" ").expect("game_string should have a space");
+    let (game_string, draws_string) = draw.split_once(':').expect("there must be a colon");
+    let (_, number_string) = game_string.split_once(' ').expect("game_string should have a space");
     let game_no = number_string.parse::<i32>().expect("second part of number_string should be a number");
 
     let d = parse_draws(draws_string);
@@ -78,15 +78,15 @@ fn parse_draws(draws_string: &str) -> HashMap<String, i32> {
     let mut hm = HashMap::new();
 
     draws_string
-        .split(";")
+        .split(';')
         .map(|s| s.trim())
-        .flat_map(|s| s.split(",").collect::<Vec<_>>())
+        .flat_map(|s| s.split(',').collect::<Vec<_>>())
         .map(|s| s.trim())
-        .filter_map(|s| s.split_once(" "))
+        .filter_map(|s| s.split_once(' '))
         .map(|(n, c)| (n.parse::<i32>().expect("must be a number"), c))
         .for_each(|(n, c)| {
 
-            let old_value = hm.get(c.into());
+            let old_value = hm.get(c);
             match old_value {
                 None => _ = hm.insert(c.into(), n),
                 Some(o) => {
